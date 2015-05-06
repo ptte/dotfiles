@@ -5,7 +5,7 @@
 
 `brew install caskroom/cask/brew-cask`
 
-`brew install git node mongo etcd rabbitmq zsh wget`
+`brew install git node mongo etcd rabbitmq zsh wget nmap`
 
 ```
 brew cask install alfred google-chrome sublime iterm2 launchrocket dropbox \

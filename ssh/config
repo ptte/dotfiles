@@ -1,0 +1,18 @@
+Host pr
+	Port 222
+Host local.bloglovin.com
+	User root
+	Port 2222
+Host amazon
+	User ubuntu
+# author:      christian@bloglovin.com
+# description: ssh config entry for developer environment
+
+Host developer-environment
+  HostName     patrik.devlovin.com
+
+Host *
+	ForwardAgent yes
+	User patrik
+
+
