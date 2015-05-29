@@ -5,12 +5,12 @@
 
 `brew install caskroom/cask/brew-cask`
 
-`brew install git node mongo etcd rabbitmq zsh wget nmap`
+`brew install git nvm php55 phpdocumentor zsh wget nmap`
 
 ```
 brew cask install alfred google-chrome sublime iterm2 launchrocket dropbox \
 virtualbox boot2docker marked hipchat spotify sequel-pro skype mplayerx charles \
-skitch viscosity transmission hex-fiend
+viscosity transmission hex-fiend
 ```
 
 - Change settings in alfred to include cask programs
@@ -24,7 +24,16 @@ http://michaelheap.com/solarized-with-iterm2/
 
 `curl -L http://install.ohmyz.sh | sh`
 
-`cd .vim && git clone https://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim`
+## VIM
+`ln -s ~/Projects/dotfiles/vim/.vimrc ~./.vimrc`
+
+```
+cd .vim/bundle && \
+  git clone https://github.com/kien/ctrlp.vim.git && \
+  git clone git@github.com:terryma/vim-multiple-cursors.git && \
+  git clone git@github.com:scrooloose/nerdtree.git && \
+  cd ~
+```
 
 ## Git settings
 `git config --global push.default current`
@@ -39,7 +48,6 @@ http://michaelheap.com/solarized-with-iterm2/
 **App store**
 
 - 1password
-
 
 ## VPN
 

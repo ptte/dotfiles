@@ -3,7 +3,6 @@
 map <F9> :bd<CR>
 map <F10> :w<CR>:bd<CR>
 nnoremap <F5> :GundoToggle<CR>
-map <F6> :NERDTreeToggle<CR>
 map <F4> <Esc>ki*<Esc>jji*<Esc>kl
 map <S-F6> :set indentexpr=GetPhpIdent()<CR>
 map <S-F5> :set indentexpr=XmlIndentGet(v:lnum,1)<CR>
@@ -27,6 +26,7 @@ set pastetoggle=<S-F1>
 map <C-\> <F1>:bd<CR>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
+map <C-K> :NERDTreeToggle<CR>
 
 " lhs comments
 map ,# :s/^[ \t]*/\0#/<CR>:nohl<CR>
@@ -56,10 +56,10 @@ set nocompatible
 set ai
 set cin
 set noet et
-set ts=4
-set sw=4
+set ts=2
+set sw=2
 set fo+=or
-set softtabstop=4
+set softtabstop=2
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 if !exists("autocommands_loaded")
@@ -147,7 +147,7 @@ map Q gq
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  "set hlsearch
+  set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -219,30 +219,9 @@ let Tlist_Show_One_File = 1
 let Tlist_Close_On_Select = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 
-" command-t settings
-let g:CommandTMatchWindowAtTop=1
-let g:CommandTMaxFiles=20000
-
 " For BufferList (F2)
 let g:BufferListMaxWidth = 60
 
-" For Command-T
-let g:CommandTMaxHeight = 20
-
-let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-
-let g:ctrlp_match_window_bottom = 0
- let g:ctrlp_max_height = 20
-
-
-map <Leader>b :CtrlPBuffer<CR>
-map <Leader>l :CtrlPBuffer<CR>
-map <leader>r :CtrlPMRU<CR>
-
-let g:ctrlp_mruf_max = 500
-let g:ctrlp_mruf_relative = 1
 
 map <Leader>y :call YankLineInfo(0)<CR>
 map <Leader>Y :call YankLineInfo(1)<CR>
@@ -258,24 +237,20 @@ function! YankLineInfo(get_contents)
     call setreg('*', register)
 endfunction
 
-if &term =~ "xterm" || &term =~ "screen"
-    let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
-    let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
-    let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
-endif
-if has('mouse')
-  set mouse=a
-  if &term =~ "xterm" || &term =~ "screen"
-    " for some reason, doing this directly with 'set ttymouse=xterm2'
-    " doesn't work -- 'set ttymouse?' returns xterm2 but the mouse
-    " makes tmux enter copy mode instead of selecting or scrolling
-    " inside Vim -- but luckily, setting it up from within autocmds
-    " works                   
-    autocmd VimEnter * set ttymouse=xterm2
-    autocmd FocusGained * set ttymouse=xterm2
-    autocmd BufEnter * set ttymouse=xterm2
-  endif
-endif
+" Mouse for visual mode
+"if has('mouse')
+"  set mouse=a
+"  if &term =~ "xterm" || &term =~ "screen"
+"    " for some reason, doing this directly with 'set ttymouse=xterm2'
+"    " doesn't work -- 'set ttymouse?' returns xterm2 but the mouse
+"    " makes tmux enter copy mode instead of selecting or scrolling
+"    " inside Vim -- but luckily, setting it up from within autocmds
+"    " works                   
+"    autocmd VimEnter * set ttymouse=xterm2
+"    autocmd FocusGained * set ttymouse=xterm2
+"    autocmd BufEnter * set ttymouse=xterm2
+"  endif
+"endif
 
 if &term =~ '^screen'
     " tmux will send xterm-style keys when xterm-keys is on
@@ -284,8 +259,9 @@ if &term =~ '^screen'
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
 endif
-"call pathogen#infect()
 
+" Pathogen
+execute pathogen#infect()
 
 set statusline+=%#warningmsg#
 set statusline+=%*
@@ -309,26 +285,35 @@ ca pv Pv
 set clipboard=unnamed
 au BufReadPost * if getfsize(bufname("%")) > 202400 | set syntax= | endif
 
-"map <up> <nop>
-"map <down> <nop>
-"map <left> <nop>
-"map <right> <nop>
-"imap <up> <nop>
-"imap <down> <nop>
-"imap <left> <nop>
-"imap <right> <nop>
-"cmap <up> <nop>
-"cmap <down> <nop>
-"cmap <left> <nop>
-"cmap <right> <nop>
-imap ctrl+[ <ESC>
-
+" CtrlP settings
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_extensions = ['funky'] 
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_max_height = 20
+
+map <Leader>b :CtrlPBuffer<CR>
+map <Leader>l :CtrlPBuffer<CR>
+map <leader>r :CtrlPMRU<CR>
+
+let g:ctrlp_mruf_max = 500
+let g:ctrlp_mruf_relative = 1
 
 nnoremap <Leader>fu :CtrlPFunky<Cr> 
 " narrow the list down with a word under cursor 
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr> 
+
+" Multiple cursor setting
+let g:multi_cursor_next_key='<C-d>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
 "set relativenumber
+nnoremap <C-n> :call NumberToggle()<cr>
 function! NumberToggle()
     if(&relativenumber == 1)
         set number
@@ -337,10 +322,28 @@ function! NumberToggle()
     endif
 endfunc
 
-nnoremap <C-n> :call NumberToggle()<cr>
-
-let g:fugitive_github_domains = ['github.com','github.etsycorp.com']
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 colorscheme default
+
+function SmoothScroll(up)
+    if a:up
+        let scrollaction=""
+    else
+        let scrollaction=""
+    endif
+    exec "normal " . scrollaction
+    redraw
+    let counter=1
+    while counter<&scroll
+        let counter+=1
+        sleep 10m
+        redraw
+        exec "normal " . scrollaction
+    endwhile
+endfunction
+
+nnoremap <C-U> :call SmoothScroll(1)<Enter>
+nnoremap <C-D> :call SmoothScroll(0)<Enter>
+inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
+inoremap <C-D> <Esc>:call SmoothScroll(0)<Enter>i
+
+set viminfo='20,<1000,s1000
