@@ -147,7 +147,7 @@ map Q gq
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  set hlsearch
+  "set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -194,8 +194,6 @@ let g:miniBufExplMapCTabSwitchWindows = 0
 let g:miniBufExplModSelTarget = 1 
 set hidden
 set background=dark
-"colorscheme solarized
-"colorscheme torte
 set foldmethod=marker
 
 set nobackup
@@ -204,12 +202,6 @@ set smartcase
 set et
 set number
 autocmd Filetype gitcommit setlocal spell textwidth=72
-"autocmd BufWritePre *.php :%s/\s\+$//e
-"autocmd BufWritePre *.php :%s/if(/if (/e
-"autocmd BufWritePre *.php :%s/foreach(/foreach (/e
-autocmd BufWritePost /usr/etsy/deployinator/* :silent !touch /usr/etsy/deployinator/tmp/restart.txt
-autocmd BufWritePost /usr/etsy/deployinator2/* :silent !touch /usr/etsy/deployinator2/tmp/restart.txt
-autocmd BufWritePost /usr/etsy/deployinator-gem/* :silent !touch /usr/etsy/deployinator2/tmp/restart.txt
 set undodir=./.vim-undo//
 set undodir+=~/.vim/undo//
 set undofile
@@ -350,3 +342,5 @@ nnoremap <C-n> :call NumberToggle()<cr>
 let g:fugitive_github_domains = ['github.com','github.etsycorp.com']
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+colorscheme default
