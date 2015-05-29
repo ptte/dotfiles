@@ -24,6 +24,8 @@ http://michaelheap.com/solarized-with-iterm2/
 
 `curl -L http://install.ohmyz.sh | sh`
 
+`cd .vim && git clone https://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim`
+
 ## Git settings
 `git config --global push.default current`
 `git config --global push.default current`

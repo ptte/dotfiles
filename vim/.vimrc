@@ -348,3 +348,5 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
 let g:fugitive_github_domains = ['github.com','github.etsycorp.com']
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
