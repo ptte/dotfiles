@@ -11,6 +11,7 @@ alias commit='git commit'
 alias push='git push'
 alias pull='git pull'
 alias rebase='git rebase'
+alias lg="log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset%C(yellow)%d%Creset %Cgreen(%cr)%Creset %s' --abbrev-commit --date=relative"
 alias nodeweb='cd ~/Projects/bl/node-web'
 alias coreapp='cd ~/bloglovin/develop/core-app'
 alias searchapi='cd ~/Projects/bl/search'
