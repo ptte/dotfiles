@@ -4,17 +4,18 @@ export ZSH=$HOME/.oh-my-zsh
 # Export docker host
 export DOCKER_HOST=tcp://192.168.59.103:2375
 
+alias git=hub
+alias pr="hub pull-request"
 alias check='git checkout'
 alias status='git status'
 alias gdiff='git diff'
 alias commit='git commit'
 alias push='git push'
+alias add='git add -p'
 alias pull='git pull'
 alias rebase='git rebase'
 alias lg="git log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset%C(yellow)%d%Creset %Cgreen(%cr)%Creset %s' --abbrev-commit --date=relative"
-alias nodeweb='cd ~/bloglovin/develop/node-web'
 alias coreapp='cd ~/bloglovin/develop/core-app'
-alias searchapi='cd ~/Projects/bl/search'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

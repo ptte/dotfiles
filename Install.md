@@ -5,11 +5,11 @@
 
 `brew install caskroom/cask/brew-cask`
 
-`brew install git nvm php55 phpdocumentor zsh wget nmap`
+`brew install git hub nvm php55 phpdocumentor zsh wget nmap`
 
 ```
 brew cask install alfred google-chrome sublime iterm2 launchrocket dropbox \
-virtualbox boot2docker marked hipchat spotify sequel-pro skype mplayerx charles \
+virtualbox boot2docker marked slack spotify sequel-pro skype mplayerx charles \
 viscosity transmission hex-fiend
 ```
 
