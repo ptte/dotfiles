@@ -10,7 +10,7 @@
 ```
 brew cask install alfred google-chrome sublime iterm2 launchrocket dropbox \
 virtualbox boot2docker marked slack spotify sequel-pro skype mplayerx charles \
-viscosity transmission hex-fiend
+viscosity transmission hex-fiend hammerspoon
 ```
 
 - Change settings in alfred to include cask programs
