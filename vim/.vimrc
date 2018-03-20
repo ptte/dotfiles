@@ -260,9 +260,6 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
 endif
 
-" Pathogen
-execute pathogen#infect()
-
 set statusline+=%#warningmsg#
 set statusline+=%*
 

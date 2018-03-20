@@ -21,7 +21,7 @@ alias coreapp='cd ~/bloglovin/develop/core-app'
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ptte"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -95,6 +95,6 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-export PATH="$PATH:$HOME/.bin"
+#export GOPATH=$HOME/go
+#export PATH=$GOPATH/bin:$PATH
+#export PATH="$PATH:$HOME/.bin"
