@@ -1,9 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Export docker host
-export DOCKER_HOST=tcp://192.168.59.103:2375
-
 alias git=hub
 alias pr="hub pull-request"
 alias check='git checkout'
@@ -15,7 +12,18 @@ alias add='git add -p'
 alias pull='git pull'
 alias rebase='git rebase'
 alias lg="git log --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset%C(yellow)%d%Creset %Cgreen(%cr)%Creset %s' --abbrev-commit --date=relative"
-alias coreapp='cd ~/bloglovin/develop/core-app'
+alias mortgagetest='NODE_ENV=test PORT=33990 mocha --no-timeouts --require ./lib/type-check-transform.js'
+alias db-update='cd ~/code/mortgage/mortgage && NODE_ENV=test make migrate-schema && make migrate-schema'
+alias testvisuals='pytest -rwxs --pdb --base-url http://local.better.com:9000 --driver Chrome --capability resolution 1440x1440'
+alias run='PORT=3001 LOCAL_DB=mortgage_postgres_1 make run'
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+alias pipall='pip install -r requirements.txt -i https://$ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD@artifactory.bettermg.com/artifactory/api/pypi/pypi/simple'
+alias better='cd ~/code/mortgage'
+alias aws-super='eval $(make assume-super-developer)'
+alias aws-unset='eval $(make unset)'
+alias aws-ecr-login='make ecr-login'
+alias aws-creds='aws-unset && aws-super && aws-ecr-login'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -61,7 +69,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git,brew,brew-cask,osx)
+plugins=(git,brew,brew-cask,osx,kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,3 +106,10 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 #export GOPATH=$HOME/go
 #export PATH=$GOPATH/bin:$PATH
 #export PATH="$PATH:$HOME/.bin"
+#
+
+export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
+
+source ~/.secrets.sh
+export PATH="/usr/local/bin:$PATH"
